@@ -1,0 +1,15 @@
+{
+    "bac0cfd6-f896-46d2-a917-ad9f2cb1ab47": {
+        "title": "CoD World at War",
+        "category": "War",
+        "maxLevel": "10",
+        "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3HXp8oqYp-HYuKG8okobEK5disPkkWLwFUg&s",
+        "_id": "bac0cfd6-f896-46d2-a917-ad9f2cb1ab47"
+    },
+    "7ea4fdfc-07c9-42a5-8ae3-1e509cbde9c4": {
+        "title": "Assassin's creed",
+        "category": "Combat",
+        "maxLevel": "1",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/en/5/52/Assassin%27s_Creed.jpg"
+    }
+}
