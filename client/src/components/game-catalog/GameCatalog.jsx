@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import gameService from "../services/gameService";
+import gameService from "../../services/gameService";
 import GameCatalogItem from "./game-catalog-item/GameCatalogItem";
 
 export default function GameCatalog() {
