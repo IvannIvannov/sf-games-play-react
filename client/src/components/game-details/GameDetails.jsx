@@ -14,7 +14,7 @@ export default function GameDetails() {
         })();
     }, [gameId]);
 
-    const gameDeleteCLickHandler = async () => {
+    const gameDeleteClickHandler = async () => {
         const hasConfirm = confirm(`Are you sure you want to delete ${game.title} game?`);
 
         if(!hasConfirm) {
@@ -60,8 +60,8 @@ export default function GameDetails() {
 
                 {/* <!-- Edit/Delete buttons ( Only for creator of this game )  --> */}
                 <div className="buttons">
-                    <Link href="#" className="button">Edit</Link>
-                    <button onClick={gameDeleteCLickHandler}
+                    <Link to={`/games/${gameId}/edit`} className="button">Edit</Link>
+                    <button onClick={gameDeleteClickHandler}
                         className="button"
                     >
                         Delete
