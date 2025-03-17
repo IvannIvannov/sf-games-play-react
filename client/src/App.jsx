@@ -13,7 +13,7 @@ import GameEdit from './components/game-edit/GameEdit'
 import './App.css'
 
 function App() {
-    const [email, setEmail] = useState();
+    const [email, setEmail] = useState('');
 
     const userLoginHandler = (email) => {
         setEmail(email);
@@ -28,7 +28,7 @@ function App() {
                     <Route index element={<Home />} />
                     <Route path='/games' element={<GameCatalog />} />
                     <Route path='/games/create' element={<GameCreate />} />
-                    <Route path='/games/:gameId/details' element={<GameDetails />} />
+                    <Route path='/games/:gameId/details' element={<GameDetails email={email} />} />
                     <Route path='/games/:gameId/edit' element={<GameEdit />} />
                     <Route path='/login' element={<Login onLogin={userLoginHandler} />} />
                     <Route path='/register' element={<Register />} />
