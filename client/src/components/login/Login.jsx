@@ -1,25 +1,25 @@
 import { useActionState } from "react";
 import { Link, useNavigate } from "react-router";
+import { useLogin } from "../../api/authApi";
 
 export default function Login({
     onLogin,
 }) {
     const navigate = useNavigate();
+    const { login } = useLogin();
 
-    const loginHandler = (previousState, formData) => {
+    const loginHandler = async (_, formData) => {
         const values = Object.fromEntries(formData);
 
-        const email = formData.get('email');
+        const authData = await login(values.email, values.password);
 
-        onLogin(values.email);
+        onLogin(authData);
 
         navigate('/games');
+    };
 
-        return values;
-    }
+    const [_, loginAction, isPending] = useActionState(loginHandler, { email: '', password: '' });
 
-    const [values, loginAction, isPending] = useActionState(loginHandler, { email: '', password: '' });
-    
     return (
         <section id="login-page" className="auth">
             <form id="login" action={loginAction}>
