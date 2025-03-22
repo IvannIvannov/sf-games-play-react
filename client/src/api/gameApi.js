@@ -1,17 +1,10 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import request from "../utils/request";
 import { UserContext } from "../contexts/UserContext";
 
 const baseUrl = 'http://localhost:3030/data/games';
 
 export default {
-    async getAll() {
-        const result = await request.get(baseUrl);
-
-        const games = Object.values(result);
-
-        return games;
-    },
     getOne(gameId) {
         return request.get(`${baseUrl}/${gameId}`);
     },
@@ -21,6 +14,32 @@ export default {
     delete(gameId) {
         return request.delete(`${baseUrl}/${gameId}`);
     },
+};
+
+export const useGames = () => {
+    const [games, setGames] = useState([]);
+    
+    useEffect(() => {
+        request.get(baseUrl)
+            .then(setGames)
+    }, []);
+
+    return {
+        games,
+    };
+};
+
+export const useGame = (gameId) => {
+    const [game, setGame] = useState({});
+
+    useEffect(() => {
+        request.get(`${baseUrl}/${gameId}`)
+            .then(setGame);
+    }, [gameId])
+
+    return {
+        game,
+    };
 };
 
 export const useCreateGame = () => {
@@ -38,4 +57,4 @@ export const useCreateGame = () => {
     return {
         create,
     };
-}
+};
