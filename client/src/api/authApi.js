@@ -1,23 +1,27 @@
-import { useEffect, useRef } from "react";
+//import { useEffect, useRef } from "react";
 import request from "../utils/request";
 
 const baseUrl = 'http://localhost:3030/users';
 
 export const useLogin = () => {
-    const abortRef = useRef();
+    //const abortRef = useRef(new AbortController());
 
     const login = async (email, password) => {
-        const result = await request.post(`${baseUrl}/login`, { email, password }, { signal: abortRef.current.signal });
+        const result = await request.post(
+            `${baseUrl}/login`,
+            { email, password },
+            //{ signal: abortRef.current.signal }
+        );
 
         return result;
     }
 
-    useEffect(() => {
-        const abortController = new AbortController();
-        abortRef.current = abortController;
-        
-        return () => abortController.abort();
-    }, []);
+    // useEffect(() => {
+    //     const abortController = abortRef.current;
+    //     abortRef.current = abortController;
+
+    //     return () => abortController.abort();
+    // }, []);
 
     return {
         login,
